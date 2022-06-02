@@ -17,5 +17,5 @@ class StudyImage (
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="study_post_id")
-    var studyPost: StudyPost,
+    var studyPost: StudyPost?,
 )

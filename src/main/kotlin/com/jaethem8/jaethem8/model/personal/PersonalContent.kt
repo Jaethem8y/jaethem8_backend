@@ -17,5 +17,5 @@ data class PersonalContent (
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="personal_post_id")
-    var personalPost: PersonalPost,
+    var personalPost: PersonalPost?,
 )

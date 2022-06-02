@@ -17,5 +17,5 @@ data class BlogImage(
         @ManyToOne(cascade = [CascadeType.ALL])
         @JsonBackReference
         @JoinColumn(name="blog_post_id")
-        var blogPost: BlogPost,
+        var blogPost: BlogPost?,
 )
