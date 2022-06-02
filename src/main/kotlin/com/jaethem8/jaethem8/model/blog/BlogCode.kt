@@ -4,16 +4,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
-@Table(name="blog_content")
-data class BlogContent(
+@Table(name="blog_code")
+class BlogCode (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     val id:Long=0,
     @Column(name="location")
     val location:Int=0,
-    @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
-    val content:String="",
+    @Column(name = "code", length = 16777215, columnDefinition = "mediumtext")
+    val code:String="",
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="blog_post_id")

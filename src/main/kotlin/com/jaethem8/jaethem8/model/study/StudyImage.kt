@@ -1,5 +1,6 @@
 package com.jaethem8.jaethem8.model.study
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
@@ -8,12 +9,13 @@ class StudyImage (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    val id:Long,
+    val id:Long=0,
     @Column(name="location")
-    val location:Int,
+    val location:Int=0,
     @Column(name="image")
-    val image:String,
+    val image:String="",
     @ManyToOne(cascade = [CascadeType.ALL])
+    @JsonBackReference
     @JoinColumn(name="study_post_id")
-    val studyPost: StudyPost,
+    var studyPost: StudyPost,
 )

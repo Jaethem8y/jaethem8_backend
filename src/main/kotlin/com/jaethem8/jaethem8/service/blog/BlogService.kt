@@ -24,10 +24,16 @@ class BlogService(
         return blogPostRepository.deleteById(id)
     }
     fun addBlogPost(blogPost: BlogPost): BlogPost {
+        blogPost.blogContents.forEach{it.blogPost = blogPost}
+        blogPost.blogCode.forEach{it.blogPost = blogPost}
+        blogPost.blogImages.forEach{it.blogPost = blogPost}
         return blogPostRepository.save(blogPost)
     }
     fun updateBlogPost(blogPost: BlogPost): BlogPost{
         deleteBlogPostById(blogPost.id)
+        blogPost.blogContents.forEach{it.blogPost = blogPost}
+        blogPost.blogCode.forEach{it.blogPost = blogPost}
+        blogPost.blogImages.forEach{it.blogPost = blogPost}
         return addBlogPost(blogPost)
     }
 }

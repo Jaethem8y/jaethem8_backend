@@ -1,5 +1,7 @@
 package com.jaethem8.jaethem8.model.study
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.jaethem8.jaethem8.model.study.StudyContent
 import com.jaethem8.jaethem8.model.study.StudyImage
 import java.sql.Date
@@ -12,13 +14,18 @@ class StudyPost (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="id")
-        val id:Long,
+        val id:Long=0,
         @Column(name="pub_date")
-        val pubDate: Date,
+        val pubDate: Date?,
         @Column(name="pub_time")
-        val pupTime: Time,
+        val pubTime: Time?,
+        @JsonManagedReference
         @OneToMany(mappedBy = "studyPost", cascade = [CascadeType.ALL])
-        val studyContents:List<StudyContent>,
+        val studyContents:List<StudyContent> = mutableListOf(),
+        @JsonManagedReference
         @OneToMany(mappedBy = "studyPost", cascade = [CascadeType.ALL])
-        val studyImages:List<StudyImage>
+        val studyImages:List<StudyImage> = mutableListOf(),
+        @JsonBackReference
+        @OneToMany(mappedBy = "studyPost", cascade = [CascadeType.ALL])
+        val studyCode:List<StudyCode> = mutableListOf(),
         )

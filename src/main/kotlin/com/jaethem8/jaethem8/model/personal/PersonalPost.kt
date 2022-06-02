@@ -1,5 +1,6 @@
 package com.jaethem8.jaethem8.model.personal
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.jaethem8.jaethem8.model.blog.BlogContent
 import com.jaethem8.jaethem8.model.blog.BlogImage
 import java.sql.Date
@@ -12,13 +13,18 @@ data class PersonalPost(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    val id:Long,
+    val id:Long=0,
     @Column(name="pub_date")
-    val pubDate: Date,
+    val pubDate: Date?,
     @Column(name="pub_time")
-    val pupTime: Time,
+    val pubTime: Time?,
+    @JsonManagedReference
     @OneToMany(mappedBy = "personalPost", cascade = [CascadeType.ALL])
-    val personalContents:List<PersonalContent>,
+    val personalContents:List<PersonalContent> = mutableListOf(),
+    @JsonManagedReference
     @OneToMany(mappedBy = "personalPost", cascade = [CascadeType.ALL])
-    val personalImages:List<PersonalImage>
+    val personalImages:List<PersonalImage> = mutableListOf(),
+    @JsonManagedReference
+    @OneToMany(mappedBy = "personalPost", cascade = [CascadeType.ALL])
+    val personalCode:List<PersonalCode> = mutableListOf()
 )

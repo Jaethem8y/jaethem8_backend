@@ -26,10 +26,16 @@ class PersonalService(
         return personalPostRepository.deleteById(id)
     }
     fun addPersonalPost(personalPost: PersonalPost):PersonalPost{
+        personalPost.personalCode.forEach{it.personalPost = personalPost}
+        personalPost.personalContents.forEach{it.personalPost = personalPost}
+        personalPost.personalImages.forEach{it.personalPost = personalPost}
         return personalPostRepository.save(personalPost)
     }
     fun updatePersonalPost(personalPost: PersonalPost):PersonalPost{
         personalPostRepository.deleteById(personalPost.id)
+        personalPost.personalCode.forEach{it.personalPost = personalPost}
+        personalPost.personalContents.forEach{it.personalPost = personalPost}
+        personalPost.personalImages.forEach{it.personalPost = personalPost}
         return personalPostRepository.save(personalPost)
     }
 }

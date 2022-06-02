@@ -1,5 +1,6 @@
 package com.jaethem8.jaethem8.model.personal
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
@@ -8,12 +9,13 @@ data class PersonalContent (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    val id:Long,
+    val id:Long=0,
     @Column(name="location")
-    val location:Int,
-    @Column(name="content")
-    val content:String,
+    val location:Int=0,
+    @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
+    val content:String="",
     @ManyToOne(cascade = [CascadeType.ALL])
+    @JsonBackReference
     @JoinColumn(name="personal_post_id")
-    val personalPost: PersonalPost,
+    var personalPost: PersonalPost,
 )
