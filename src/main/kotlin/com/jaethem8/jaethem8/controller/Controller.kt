@@ -27,20 +27,6 @@ class Controller(
     fun getBlogPostById(@PathVariable id:Long):BlogPost?{
         return blogService.getBlogPostById(id)
     }
-    @PostMapping("/blogPost")
-    fun addBlogPost(@RequestBody blogPost: BlogPost): BlogPost{
-        return blogService.addBlogPost(blogPost)
-    }
-    @PostMapping("/update/blogPost")
-    fun updateBlogPost(@RequestBody blogPost: BlogPost): BlogPost {
-        return blogService.updateBlogPost(blogPost)
-    }
-    @DeleteMapping("/blogPost")
-    fun deleteBlogPost(@RequestBody blogPost: BlogPost){
-        return blogService.deleteBlogPostById(blogPost.id)
-    }
-
-
     @GetMapping("/studyPost")
     fun getAllStudyPost():List<StudyPost>{
         return studyService.getAllStudyPost()
@@ -49,15 +35,6 @@ class Controller(
     fun getStudyPostById(@PathVariable id:Long): StudyPost? {
         return studyService.getStudyPostById(id)
     }
-    @PostMapping("/studyPost")
-    fun addStudyPost(@RequestBody studyPost: StudyPost): StudyPost {
-        return studyService.addStudyPost(studyPost)
-    }
-    @PostMapping("/update/studyPost")
-    fun updateStudyPost(@RequestBody studyPost: StudyPost):StudyPost{
-        return studyService.updateStudyPost(studyPost)
-    }
-
 
     @GetMapping("/personalPost")
     fun getAllPersonalContent(): List<PersonalPost> {
@@ -67,13 +44,4 @@ class Controller(
     fun getPersonalContentById(@PathVariable id:Long): PersonalPost? {
         return personalService.getPersonalPostById(id)
     }
-    @PostMapping("/personalPost")
-    fun addPersonalContent(@RequestBody personalPost: PersonalPost): PersonalPost {
-        return personalService.addPersonalPost(personalPost)
-    }
-    @PostMapping("/update/personalPost")
-    fun updatePersonalContent(@RequestBody personalPost: PersonalPost): PersonalPost {
-        return personalService.updatePersonalPost(personalPost)
-    }
-
 }
