@@ -14,7 +14,7 @@ data class PersonalImage(
     @Column(name="location")
     val location:Int=0,
     @Column(name="image")
-    val image:String="",
+    var image:ByteArray?,
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="personal_post_id")
