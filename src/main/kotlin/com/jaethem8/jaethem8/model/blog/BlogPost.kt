@@ -18,6 +18,8 @@ data class BlogPost(
     val pubDate:Date?,
     @Column(name="pub_time")
     val pubTime:Time?,
+    @Column(name="title")
+    val title:String?,
     @JsonManagedReference
     @OneToMany(mappedBy = "blogPost", cascade = [CascadeType.ALL])
     val blogContents:List<BlogContent> = mutableListOf(),

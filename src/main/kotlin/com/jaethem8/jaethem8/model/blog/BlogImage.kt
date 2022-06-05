@@ -13,7 +13,7 @@ data class BlogImage(
         @Column(name="location")
         val location:Int=0,
         @Column(name="image")
-        var image:ByteArray?,
+        val image:ByteArray?,
         @ManyToOne(cascade = [CascadeType.ALL])
         @JsonBackReference
         @JoinColumn(name="blog_post_id")
