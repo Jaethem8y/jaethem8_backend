@@ -1,5 +1,9 @@
 package com.jaethem8.jaethem8.controller
 
+import com.jaethem8.jaethem8.dto.blog.BlogCodeDTO
+import com.jaethem8.jaethem8.dto.blog.BlogContentDTO
+import com.jaethem8.jaethem8.dto.blog.BlogImageDTO
+import com.jaethem8.jaethem8.dto.blog.BlogPostDTO
 import com.jaethem8.jaethem8.model.blog.BlogPost
 import com.jaethem8.jaethem8.model.personal.PersonalPost
 import com.jaethem8.jaethem8.model.study.StudyPost
@@ -9,38 +13,37 @@ import com.jaethem8.jaethem8.service.study.StudyService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 
-@RestController
+@Controller
 @RequestMapping("/admin")
 class AdminController(
     private val blogService: BlogService,
     private val personalService: PersonalService,
     private val studyService: StudyService
 ){
-    @GetMapping("/blogPost")
-    fun getAllBlogPost(): List<BlogPost> {
-        return blogService.getAllBlogPost();
+    @GetMapping("/blog/add")
+    fun getAllBlogPost(): String {
+        return "blog/blogPostAdd";
     }
-    @GetMapping("/blogPost/{id}")
-    fun getBlogPostById(@PathVariable id:Long):BlogPost?{
-        return blogService.getBlogPostById(id)
+    @PostMapping("/blog/addPost")
+    fun addBlogPost(@RequestBody blogPostDTO: BlogPostDTO):String{
+        return "/blog/blogPostAdd"
     }
-    @GetMapping("/studyPost")
-    fun getAllStudyPost():List<StudyPost>{
-        return studyService.getAllStudyPost()
+    @PostMapping("/blog/addContent")
+    fun addBlogContent(@RequestBody blogContentDTO:BlogContentDTO):String{
+        return "/blog/blogContentAdd"
     }
-    @GetMapping("/studyPost/{id}")
-    fun getStudyPostById(@PathVariable id:Long): StudyPost? {
-        return studyService.getStudyPostById(id)
+    @PostMapping("/blog/addImage")
+    fun addBlogImage(@RequestBody blogImageDTO: BlogImageDTO):String{
+        return "/blog/blogImageAdd"
     }
-
-    @GetMapping("/personalPost")
-    fun getAllPersonalContent(): List<PersonalPost> {
-        return personalService.getAllPersonalPost()
-    }
-    @GetMapping("/personalPost/{id}")
-    fun getPersonalContentById(@PathVariable id:Long): PersonalPost? {
-        return personalService.getPersonalPostById(id)
+    @PostMapping("/blog/addCode")
+    fun addBlogCode(@RequestBody blogCodeDTO: BlogCodeDTO):String{
+        return "/blog/blogCodeAdd"
     }
 }

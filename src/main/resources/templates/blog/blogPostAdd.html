@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link th:href="@{/css/blogPost/blogPostAdd.css}" rel="stylesheet" />
+    <script
+      type="text/javascript"
+      th:src="@{../static/js/blogPost/blgoPostAdd.js}"
+    ></script>
+
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="blog-post-wrapper">
+      <div class="blog-post-header">
+        <h1>Add a blogPost</h1>
+      </div>
+      <div class="blog-post-form">
+        <form
+          th:action="@{/admin/blogPost/add}"
+          method="post"
+          th:object="${blogPost}"
+        >
+          <p>Title <input type="text" th:field="*{title}" /></p>
+          <p>Date <input type="text" th:field="*{pubDate}" /></p>
+          <p>Time <input type="text" th:field="*{pubTime}" /></p>
+          <input type="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

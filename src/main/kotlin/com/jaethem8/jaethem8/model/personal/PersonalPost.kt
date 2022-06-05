@@ -28,5 +28,5 @@ data class PersonalPost(
     val personalImages:List<PersonalImage> = mutableListOf(),
     @JsonManagedReference
     @OneToMany(mappedBy = "personalPost", cascade = [CascadeType.ALL])
-    val personalCode:List<PersonalCode> = mutableListOf()
+    val personalCodes:List<PersonalCode> = mutableListOf()
 )

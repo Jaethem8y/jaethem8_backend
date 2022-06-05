@@ -24,14 +24,14 @@ class StudyService(
         return studyPostRepository.deleteById(id)
     }
     fun addStudyPost(studyPost: StudyPost): StudyPost{
-        studyPost.studyCode.forEach{it.studyPost = studyPost}
+        studyPost.studyCodes.forEach{it.studyPost = studyPost}
         studyPost.studyContents.forEach{it.studyPost = studyPost}
         studyPost.studyImages.forEach{it.studyPost = studyPost}
         return studyPostRepository.save(studyPost)
     }
     fun updateStudyPost(studyPost: StudyPost):StudyPost{
         studyPostRepository.deleteById(studyPost.id)
-        studyPost.studyCode.forEach{it.studyPost = studyPost}
+        studyPost.studyCodes.forEach{it.studyPost = studyPost}
         studyPost.studyContents.forEach{it.studyPost = studyPost}
         studyPost.studyImages.forEach{it.studyPost = studyPost}
         return studyPostRepository.save(studyPost)

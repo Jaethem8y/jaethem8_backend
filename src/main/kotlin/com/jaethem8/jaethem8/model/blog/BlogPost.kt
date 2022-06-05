@@ -13,22 +13,22 @@ data class BlogPost(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    val id:Long=0,
+    var id:Long=0,
     @Column(name="pub_date")
-    val pubDate:Date?,
+    var pubDate:Date?=null,
     @Column(name="pub_time")
-    val pubTime:Time?,
+    var pubTime:Time?=null,
     @Column(name="title")
-    val title:String?,
+    var title:String?=null,
     @JsonManagedReference
     @OneToMany(mappedBy = "blogPost", cascade = [CascadeType.ALL])
-    val blogContents:List<BlogContent> = mutableListOf(),
+    var blogContents:List<BlogContent> = mutableListOf(),
     @JsonManagedReference
     @OneToMany(mappedBy = "blogPost", cascade = [CascadeType.ALL])
-    val blogImages:List<BlogImage> = mutableListOf(),
+    var blogImages:List<BlogImage> = mutableListOf(),
     @JsonManagedReference
     @OneToMany(mappedBy = "blogPost", cascade = [CascadeType.ALL])
-    val blogCode:List<BlogCode> = mutableListOf()
+    var blogCodes:List<BlogCode> = mutableListOf()
 
 
 )

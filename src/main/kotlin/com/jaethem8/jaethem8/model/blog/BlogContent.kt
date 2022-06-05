@@ -9,13 +9,13 @@ data class BlogContent(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    val id:Long=0,
+    var id:Long=0,
     @Column(name="location")
-    val location:Int=0,
+    var location:Int=0,
     @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
-    val content:String="",
+    var content:String="",
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="blog_post_id")
-    var blogPost: BlogPost?,
+    var blogPost: BlogPost? = null,
 )

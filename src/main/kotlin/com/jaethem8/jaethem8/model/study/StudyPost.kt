@@ -29,5 +29,5 @@ class StudyPost (
         val studyImages:List<StudyImage> = mutableListOf(),
         @JsonBackReference
         @OneToMany(mappedBy = "studyPost", cascade = [CascadeType.ALL])
-        val studyCode:List<StudyCode> = mutableListOf(),
+        val studyCodes:List<StudyCode> = mutableListOf(),
         )

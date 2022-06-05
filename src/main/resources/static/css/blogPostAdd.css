@@ -1,0 +1,13 @@
+.blog-post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.blog-post-header {
+  padding: 30px;
+}
+
+textarea {
+  width: 100%;
+}
