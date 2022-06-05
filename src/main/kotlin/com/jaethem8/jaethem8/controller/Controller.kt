@@ -20,25 +20,25 @@ class Controller(
     fun getAllBlogPost(): List<BlogPost> {
         return blogService.getAllBlogPost();
     }
-    @GetMapping("/blogPost/{id}")
-    fun getBlogPostById(@PathVariable id:Long):BlogPost?{
-        return blogService.getBlogPostById(id)
+    @GetMapping("/blogPost/{title}")
+    fun getBlogPostById(@PathVariable title:String):BlogPost?{
+        return blogService.getBlogPostByTitle(title)
     }
     @GetMapping("/studyPost")
     fun getAllStudyPost():List<StudyPost>{
         return studyService.getAllStudyPost()
     }
-    @GetMapping("/studyPost/{id}")
-    fun getStudyPostById(@PathVariable id:Long): StudyPost? {
-        return studyService.getStudyPostById(id)
+    @GetMapping("/studyPost/{title}")
+    fun getStudyPostById(@PathVariable title:String): StudyPost? {
+        return studyService.getStudyPostByTitle(title)
     }
 
     @GetMapping("/personalPost")
     fun getAllPersonalContent(): List<PersonalPost> {
         return personalService.getAllPersonalPost()
     }
-    @GetMapping("/personalPost/{id}")
-    fun getPersonalContentById(@PathVariable id:Long): PersonalPost? {
-        return personalService.getPersonalPostById(id)
+    @GetMapping("/personalPost/{title}")
+    fun getPersonalContentById(@PathVariable title:String): PersonalPost? {
+        return personalService.getPersonalPostByTitle(title)
     }
 }

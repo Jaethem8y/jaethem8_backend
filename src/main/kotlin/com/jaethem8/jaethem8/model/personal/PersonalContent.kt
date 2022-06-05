@@ -9,11 +9,15 @@ data class PersonalContent (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    val id:Long=0,
+    var id:Long=0,
     @Column(name="location")
-    val location:Int=0,
+    var location:Int=0,
     @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
-    val content:String="",
+    var content:String="",
+    @Column(name="image")
+    var image:ByteArray?=null,
+    @Column(name = "code", length = 16777215, columnDefinition = "mediumtext")
+    var code:String="",
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="personal_post_id")

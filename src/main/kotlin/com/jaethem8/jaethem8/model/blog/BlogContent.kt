@@ -14,6 +14,10 @@ data class BlogContent(
     var location:Int=0,
     @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
     var content:String="",
+    @Column(name="image")
+    var image:ByteArray?=null,
+    @Column(name = "code", length = 16777215, columnDefinition = "mediumtext")
+    var code:String="",
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="blog_post_id")

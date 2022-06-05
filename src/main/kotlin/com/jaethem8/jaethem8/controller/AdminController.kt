@@ -1,8 +1,6 @@
 package com.jaethem8.jaethem8.controller
 
-import com.jaethem8.jaethem8.dto.blog.BlogCodeDTO
 import com.jaethem8.jaethem8.dto.blog.BlogContentDTO
-import com.jaethem8.jaethem8.dto.blog.BlogImageDTO
 import com.jaethem8.jaethem8.dto.blog.BlogPostDTO
 
 import com.jaethem8.jaethem8.service.blog.BlogService
@@ -31,7 +29,7 @@ class AdminController(
     @PostMapping("/blog/addPost")
     fun addBlogPost(@ModelAttribute blogPostDTO: BlogPostDTO):String{
         blogService.addBlogPost(blogPostDTO)
-        return "/blog/blogPostAdd"
+        return "admin"
     }
     @GetMapping("/blog/addContent")
     fun getAddBlogContent(model:Model): String {
@@ -42,25 +40,5 @@ class AdminController(
     fun addBlogContent(@ModelAttribute blogContentDTO:BlogContentDTO):String{
         blogService.addBlogContent(blogContentDTO)
         return "/blog/blogContentAdd"
-    }
-    @GetMapping("/blog/addImage")
-    fun getAddBlogImage(model:Model): String {
-        model.addAttribute("blogImageDTO",BlogImageDTO())
-        return "blog/blogImageAdd";
-    }
-    @PostMapping("/blog/addImage")
-    fun addBlogImage(@ModelAttribute blogImageDTO: BlogImageDTO):String{
-        blogService.addBlogImage(blogImageDTO)
-        return "/blog/blogImageAdd"
-    }
-    @GetMapping("/blog/addCode")
-    fun getAddBlogCode(model:Model): String {
-        model.addAttribute("blogCodeDTO",BlogCodeDTO())
-        return "blog/blogCodeAdd";
-    }
-    @PostMapping("/blog/addCode")
-    fun addBlogCode(@ModelAttribute blogCodeDTO: BlogCodeDTO):String{
-        blogService.addBlogCode(blogCodeDTO)
-        return "/blog/blogCodeAdd"
     }
 }

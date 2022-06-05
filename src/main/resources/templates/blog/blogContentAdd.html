@@ -22,6 +22,14 @@
             content
             <textarea style="width: 100%" th:field="*{content}"></textarea>
           </p>
+          <p>
+            code
+            <textarea style="width: 100%" th:field="*{code}"></textarea>
+          </p>
+          <p>
+            image
+            <input type="file" th:field="*{image}" />
+          </p>
           <input type="submit" />
         </form>
       </div>
