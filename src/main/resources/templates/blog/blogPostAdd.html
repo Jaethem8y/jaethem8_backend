@@ -3,13 +3,7 @@
   <head>
     <meta charset="UTF-8" />
 
-    <link th:href="@{/css/blogPost/blogPostAdd.css}" rel="stylesheet" />
-    <script
-      type="text/javascript"
-      th:src="@{../static/js/blogPost/blgoPostAdd.js}"
-    ></script>
-
-    <title>Title</title>
+    <title>BlogPostAdd</title>
   </head>
   <body>
     <div class="blog-post-wrapper">
@@ -18,13 +12,12 @@
       </div>
       <div class="blog-post-form">
         <form
-          th:action="@{/admin/blogPost/add}"
+          th:action="@{/admin/blog/addPost}"
           method="post"
-          th:object="${blogPost}"
+          th:object="${blogPostDTO}"
         >
           <p>Title <input type="text" th:field="*{title}" /></p>
           <p>Date <input type="text" th:field="*{pubDate}" /></p>
-          <p>Time <input type="text" th:field="*{pubTime}" /></p>
           <input type="submit" />
         </form>
       </div>

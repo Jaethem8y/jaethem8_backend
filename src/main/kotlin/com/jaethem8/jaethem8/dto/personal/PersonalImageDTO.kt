@@ -1,6 +1,6 @@
-package com.jaethem8.jaethem8.dto.blog
+package com.jaethem8.jaethem8.dto.personal
 
-class BlogImageDTO (
+data class PersonalImageDTO(
     var location:Int=0,
     var image:ByteArray?=null,
     var title:String=""

@@ -16,8 +16,7 @@ data class BlogPost(
     var id:Long=0,
     @Column(name="pub_date")
     var pubDate:Date?=null,
-    @Column(name="pub_time")
-    var pubTime:Time?=null,
+
     @Column(name="title")
     var title:String?=null,
     @JsonManagedReference

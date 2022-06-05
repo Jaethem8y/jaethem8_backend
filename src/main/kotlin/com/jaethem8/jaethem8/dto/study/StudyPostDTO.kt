@@ -1,8 +1,8 @@
-package com.jaethem8.jaethem8.dto.blog
+package com.jaethem8.jaethem8.dto.study
 
 import java.sql.Date
 
-data class BlogPostDTO(
+data class StudyPostDTO(
     var pubDate: Date?=null,
     var title:String?=null,
 )

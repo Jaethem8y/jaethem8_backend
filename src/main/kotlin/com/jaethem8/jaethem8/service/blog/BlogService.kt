@@ -34,10 +34,10 @@ class BlogService(
     fun deleteBlogPostById(id:Long){
         return blogPostRepository.deleteById(id)
     }
+
     fun addBlogPost(blogPostDTO: BlogPostDTO): BlogPost {
         var blogPost = BlogPost()
         blogPost.pubDate = blogPostDTO.pubDate
-        blogPost.pubTime = blogPostDTO.pubTime
         blogPost.title = blogPostDTO.title
         return blogPostRepository.save(blogPost)
     }
@@ -49,7 +49,6 @@ class BlogService(
         blogContent.location = blogContentDTO.location
         blogContent.blogPost = blogPost
         blogPost!!.blogContents += blogContent
-        blogPostRepository.deleteByTitle(blogContentDTO.title)
         return blogPostRepository.save(blogPost)
     }
     @Transactional
@@ -60,7 +59,6 @@ class BlogService(
         blogImage.location = blogImageDTO.location
         blogImage.blogPost = blogPost
         blogPost!!.blogImages += blogImage
-        blogPostRepository.deleteByTitle(blogImageDTO.title)
         return blogPostRepository.save(blogPost)
     }
     @Transactional
@@ -71,7 +69,6 @@ class BlogService(
         blogCode.location = blogCodeDTO.location
         blogCode.blogPost = blogPost
         blogPost!!.blogCodes += blogCode
-        blogPostRepository.deleteByTitle(title)
         return blogPostRepository.save(blogPost)
     }
 

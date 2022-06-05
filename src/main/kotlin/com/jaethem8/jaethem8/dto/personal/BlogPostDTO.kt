@@ -1,4 +1,4 @@
-package com.jaethem8.jaethem8.dto.blog
+package com.jaethem8.jaethem8.dto.personal
 
 import java.sql.Date
 

@@ -16,8 +16,7 @@ data class PersonalPost(
     val id:Long=0,
     @Column(name="pub_date")
     val pubDate: Date?,
-    @Column(name="pub_time")
-    val pubTime: Time?,
+
     @Column(name="title")
     val title:String,
     @JsonManagedReference
