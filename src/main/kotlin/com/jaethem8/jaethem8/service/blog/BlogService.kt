@@ -31,7 +31,7 @@ class BlogService(
 
     fun addBlogPost(blogPostDTO: BlogPostDTO): BlogPost {
         var blogPost = BlogPost()
-        blogPost.pubDate = blogPostDTO.pubDate
+        blogPost.pubDate = Date()
         blogPost.title = blogPostDTO.title
         return blogPostRepository.save(blogPost)
     }

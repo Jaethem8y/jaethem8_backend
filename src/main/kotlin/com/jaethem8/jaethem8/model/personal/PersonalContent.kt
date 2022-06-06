@@ -14,7 +14,8 @@ data class PersonalContent (
     var location:Int=0,
     @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
     var content:String="",
-    @Column(name="image")
+    @Lob
+    @Column(name="image", length = 16777215, columnDefinition = "mediumtext")
     var image:ByteArray?=null,
     @Column(name = "code", length = 16777215, columnDefinition = "mediumtext")
     var code:String="",

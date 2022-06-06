@@ -29,7 +29,7 @@ class AdminController(
     @PostMapping("/blog/addPost")
     fun addBlogPost(@ModelAttribute blogPostDTO: BlogPostDTO):String{
         blogService.addBlogPost(blogPostDTO)
-        return "admin"
+        return "/blog/blogPostAdd"
     }
     @GetMapping("/blog/addContent")
     fun getAddBlogContent(model:Model): String {

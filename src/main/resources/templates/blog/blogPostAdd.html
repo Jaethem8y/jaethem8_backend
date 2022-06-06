@@ -15,9 +15,9 @@
           th:action="@{/admin/blog/addPost}"
           method="post"
           th:object="${blogPostDTO}"
+          enctype="multipart/form-data"
         >
           <p>Title <input type="text" th:field="*{title}" /></p>
-          <p>Date <input type="text" th:field="*{pubDate}" /></p>
           <input type="submit" />
         </form>
       </div>

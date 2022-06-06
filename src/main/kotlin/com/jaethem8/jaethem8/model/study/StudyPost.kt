@@ -1,7 +1,7 @@
 package com.jaethem8.jaethem8.model.study
 
 import com.fasterxml.jackson.annotation.JsonManagedReference
-import java.sql.Date
+import java.util.Date
 import javax.persistence.*
 
 @Entity
