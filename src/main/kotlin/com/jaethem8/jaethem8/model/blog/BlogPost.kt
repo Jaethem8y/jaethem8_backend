@@ -12,6 +12,14 @@ data class BlogPost(
     var title:String?=null,
     @Column(name="pub_date")
     var pubDate:Date?=null,
+    @Column(name="role")
+    var role:String?=null,
+    @Column(name="frontend")
+    var frontend:String?=null,
+    @Column(name="backend")
+    var backend:String?=null,
+    @Column(name="general")
+    var general:String?=null,
     @JsonManagedReference
     @OneToMany(mappedBy = "blogPost", cascade = [CascadeType.ALL])
     var blogContents:List<BlogContent> = mutableListOf(),

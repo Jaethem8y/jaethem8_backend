@@ -33,6 +33,10 @@ class BlogService(
         var blogPost = BlogPost()
         blogPost.pubDate = Date()
         blogPost.title = blogPostDTO.title
+        blogPost.role = blogPostDTO.role
+        blogPost.frontend = blogPostDTO.frontend
+        blogPost.backend = blogPostDTO.backend
+        blogPost.general = blogPostDTO.general
         return blogPostRepository.save(blogPost)
     }
     @Transactional
