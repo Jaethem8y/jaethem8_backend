@@ -13,12 +13,12 @@ data class PersonalContent (
     @Column(name="location")
     var location:Int=0,
     @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
-    var content:String="",
+    var content:String?=null,
     @Lob
     @Column(name="image", length = 16777215, columnDefinition = "mediumtext")
-    var image:ByteArray?=null,
+    var image:String?=null,
     @Column(name = "code", length = 16777215, columnDefinition = "mediumtext")
-    var code:String="",
+    var code:String?=null,
     @ManyToOne(cascade = [CascadeType.ALL])
     @JsonBackReference
     @JoinColumn(name="personal_post_id")
