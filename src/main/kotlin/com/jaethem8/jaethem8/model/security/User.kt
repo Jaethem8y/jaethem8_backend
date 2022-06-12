@@ -1,19 +1,16 @@
 package com.jaethem8.jaethem8.model.security
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.Id
-import javax.persistence.ManyToMany
+import javax.persistence.*
 
 @Entity
 data class User(
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    val id:Long,
-    val name:String,
-    val username:String,
-    val password:String,
+    var id:Long?,
+    var name:String,
+    var username:String,
+    var password:String,
     @ManyToMany(fetch=FetchType.EAGER)
-    val role:Collection<Role> = mutableListOf(),
+    var role:List<Role> = mutableListOf(),
 )

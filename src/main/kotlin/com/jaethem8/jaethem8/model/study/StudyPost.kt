@@ -8,6 +8,7 @@ import javax.persistence.*
 @Table(name="study_post")
 class StudyPost(
         @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         @Column(name="id")
         var id:Long?=0,
         @Column(name="title",unique = true)

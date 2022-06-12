@@ -12,6 +12,7 @@ import java.util.*
 import javax.transaction.Transactional
 
 @Service
+@Transactional
 class BlogService(
     private val blogContentRepository: BlogContentRepository,
     private val blogPostRepository: BlogPostRepository
@@ -39,7 +40,6 @@ class BlogService(
         blogPost.general = blogPostDTO.general
         return blogPostRepository.save(blogPost)
     }
-    @Transactional
     fun addBlogContent(blogContentDTO: BlogContentDTO):BlogPost{
         var blogContent = BlogContent()
         var blogPost = blogPostRepository.findByTitle(blogContentDTO.title)
