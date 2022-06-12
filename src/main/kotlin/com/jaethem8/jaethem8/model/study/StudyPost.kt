@@ -8,7 +8,9 @@ import javax.persistence.*
 @Table(name="study_post")
 class StudyPost(
         @Id
-        @Column(name="title")
+        @Column(name="id")
+        var id:Long?=0,
+        @Column(name="title",unique = true)
         var title:String?=null,
         @Column(name="pub_date")
         var pubDate:Date?=null,
