@@ -7,6 +7,7 @@ import com.jaethem8.jaethem8.repository.security.UserRepository
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
@@ -14,9 +15,11 @@ import javax.transaction.Transactional
 @Transactional
 class UserService(
     private val userRepository: UserRepository,
-    private val roleRepository: RoleRepository
+    private val roleRepository: RoleRepository,
+    private val passwordEncoder:PasswordEncoder
 ):UserDetailsService {
     fun saveUser(user:User): User{
+        user.password = passwordEncoder.encode(user.password)
         return userRepository.save(user)
     }
     fun saveRole(role: Role):Role{
@@ -29,6 +32,7 @@ class UserService(
         return userRepository.save(user)
     }
     fun getUser(username:String):User{
+        print(userRepository.findByUsername(username).name)
         return userRepository.findByUsername(username)
     }
     fun getUsers():List<User>{
