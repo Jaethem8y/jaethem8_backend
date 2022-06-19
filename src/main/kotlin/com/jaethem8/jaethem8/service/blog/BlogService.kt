@@ -6,7 +6,6 @@ import com.jaethem8.jaethem8.model.blog.BlogContent
 import com.jaethem8.jaethem8.model.blog.BlogPost
 import com.jaethem8.jaethem8.repository.blog.BlogContentRepository
 import com.jaethem8.jaethem8.repository.blog.BlogPostRepository
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.util.*
 import javax.transaction.Transactional
@@ -20,14 +19,14 @@ class BlogService(
     fun getAllBlogPost():List<BlogPost>{
         return blogPostRepository.findAll()
     }
-    fun getBlogPostById(id:Long): BlogPost? {
-        return blogPostRepository.findByIdOrNull(id)
+    fun getBlogContentByPostName(postName:String):List<BlogContent>{
+        return blogContentRepository.findContentByPostName(postName)
     }
-    fun getBlogPostByTitle(title:String):BlogPost?{
+    fun getBlogPostByTitle(title:String):BlogPost{
         return blogPostRepository.findByTitle(title)
     }
-    fun deleteBlogPostByTitle(title:String){
-        return blogPostRepository.deleteByTitle(title)
+    fun getBlogContentById(id:Long):BlogContent{
+        return blogContentRepository.findById(id).get()
     }
 
     fun addBlogPost(blogPostDTO: BlogPostDTO): BlogPost {
@@ -43,6 +42,7 @@ class BlogService(
     fun addBlogContent(blogContentDTO: BlogContentDTO):BlogPost{
         var blogContent = BlogContent()
         var blogPost = blogPostRepository.findByTitle(blogContentDTO.title)
+        blogContent.postName = blogContentDTO.title
         blogContent.content = blogContentDTO.content
         blogContent.location = blogContentDTO.location
         blogContent.code = blogContentDTO.code

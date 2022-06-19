@@ -6,7 +6,6 @@ import com.jaethem8.jaethem8.repository.personal.PersonalContentRepository
 import com.jaethem8.jaethem8.repository.personal.PersonalPostRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import java.util.*
 import javax.transaction.Transactional
 
 @Service

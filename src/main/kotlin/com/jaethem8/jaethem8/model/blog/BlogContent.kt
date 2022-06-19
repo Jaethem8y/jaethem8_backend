@@ -1,6 +1,7 @@
 package com.jaethem8.jaethem8.model.blog
 
 import com.fasterxml.jackson.annotation.JsonBackReference
+import org.springframework.web.multipart.MultipartFile
 import javax.persistence.*
 
 @Entity
@@ -10,10 +11,13 @@ data class BlogContent(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     var id:Long=0,
+    @Column(name="post_ame")
+    var postName:String?=null,
     @Column(name="location")
     var location:Int=0,
     @Column(name = "content", length = 16777215, columnDefinition = "mediumtext")
     var content:String?=null,
+    @Lob
     @Column(name="image", length = 16777215, columnDefinition = "mediumtext")
     var image:String?=null,
     @Column(name = "code", length = 16777215, columnDefinition = "mediumtext")
