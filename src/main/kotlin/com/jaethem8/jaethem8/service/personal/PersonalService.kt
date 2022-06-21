@@ -24,7 +24,7 @@ class PersonalService(
         return personalContentRepository.findContentByPostName(postName)
     }
 
-    fun getPersonalPostByTitle(title: String): PersonalPost? {
+    fun getPersonalPostByTitle(title: String): PersonalPost {
         return personalPostRepository.findByTitle(title)
 
     }

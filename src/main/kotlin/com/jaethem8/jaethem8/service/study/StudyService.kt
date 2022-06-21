@@ -16,31 +16,31 @@ class StudyService(
     private val studyPostRepository: StudyPostRepository,
     private val studyContentRepository: StudyContentRepository
 ) {
-    fun getAllstudyPost(): List<StudyPost> {
+    fun getAllStudyPost(): List<StudyPost> {
         return studyPostRepository.findAll()
     }
 
-    fun getstudyContentByPostName(postName: String): List<StudyContent> {
+    fun getStudyContentByPostName(postName: String): List<StudyContent> {
         return studyContentRepository.findContentByPostName(postName)
     }
 
-    fun getstudyPostByTitle(title: String): StudyPost? {
+    fun getStudyPostByTitle(title: String): StudyPost {
         return studyPostRepository.findByTitle(title)
 
     }
 
-    fun getstudyContentById(id: Long): StudyContent {
+    fun getStudyContentById(id: Long): StudyContent {
         return studyContentRepository.findById(id).get()
     }
 
-    fun addstudyPost(studyPostDTO: StudyPostDTO): StudyPost {
+    fun addStudyPost(studyPostDTO: StudyPostDTO): StudyPost {
         var studyPost = StudyPost()
         studyPost.pubDate = Date()
         studyPost.title = studyPostDTO.title
         return studyPostRepository.save(studyPost)
     }
 
-    fun addstudyContent(studyContentDTO: StudyContentDTO): StudyPost {
+    fun addStudyContent(studyContentDTO: StudyContentDTO): StudyPost {
         var studyContent = StudyContent()
         var studyPost = studyPostRepository.findByTitle(studyContentDTO.title)
         studyContent.postName = studyContentDTO.title
