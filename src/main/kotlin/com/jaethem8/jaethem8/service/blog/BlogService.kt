@@ -16,16 +16,19 @@ class BlogService(
     private val blogContentRepository: BlogContentRepository,
     private val blogPostRepository: BlogPostRepository
 ) {
-    fun getAllBlogPost():List<BlogPost>{
+    fun getAllBlogPost(): List<BlogPost> {
         return blogPostRepository.findAll()
     }
-    fun getBlogContentByPostName(postName:String):List<BlogContent>{
+
+    fun getBlogContentByPostName(postName: String): List<BlogContent> {
         return blogContentRepository.findContentByPostName(postName)
     }
-    fun getBlogPostByTitle(title:String):BlogPost{
+
+    fun getBlogPostByTitle(title: String): BlogPost {
         return blogPostRepository.findByTitle(title)
     }
-    fun getBlogContentById(id:Long):BlogContent{
+
+    fun getBlogContentById(id: Long): BlogContent {
         return blogContentRepository.findById(id).get()
     }
 
@@ -39,7 +42,8 @@ class BlogService(
         blogPost.general = blogPostDTO.general
         return blogPostRepository.save(blogPost)
     }
-    fun addBlogContent(blogContentDTO: BlogContentDTO):BlogPost{
+
+    fun addBlogContent(blogContentDTO: BlogContentDTO): BlogPost {
         var blogContent = BlogContent()
         var blogPost = blogPostRepository.findByTitle(blogContentDTO.title)
         blogContent.postName = blogContentDTO.title

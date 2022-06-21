@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface BlogPostRepository:JpaRepository<BlogPost,Long> {
-    fun findByTitle(title:String):BlogPost
-    fun deleteByTitle(title:String)
+interface BlogPostRepository : JpaRepository<BlogPost, Long> {
+    fun findByTitle(title: String): BlogPost
+    fun deleteByTitle(title: String)
 }

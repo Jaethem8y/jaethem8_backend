@@ -5,17 +5,17 @@ import java.util.Date
 import javax.persistence.*
 
 @Entity
-@Table(name="personal_post")
+@Table(name = "personal_post")
 data class PersonalPost(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    var id:Long?=0,
-    @Column(name="title",unique = true)
-    var title:String?=null,
-    @Column(name="pub_date")
-    var pubDate:Date?=null,
+    @Column(name = "id")
+    var id: Long? = 0,
+    @Column(name = "title", unique = true)
+    var title: String? = null,
+    @Column(name = "pub_date")
+    var pubDate: Date? = null,
     @JsonManagedReference
     @OneToMany(mappedBy = "personalPost", cascade = [CascadeType.ALL])
-    val personalContents:List<PersonalContent> = mutableListOf(),
+    var personalContents: List<PersonalContent> = mutableListOf(),
 )

@@ -3,7 +3,6 @@ package com.jaethem8.jaethem8.security
 import com.jaethem8.jaethem8.service.user.UserService
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -26,14 +25,18 @@ class SecurityConfiguration(
         auth.setPasswordEncoder(passwordEncoder)
         return auth
     }
+
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.authenticationProvider(authenticationProvider())
     }
+
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests().antMatchers(
             "/registration", "/js/**",
-            "/css/**", "/api/**"
-        ).permitAll().anyRequest()
+            "/css/**", "/API/**"
+        ).permitAll()
+            .and()
+            .authorizeRequests().anyRequest()
             .authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
             .invalidateHttpSession(true).clearAuthentication(true)
             .logoutRequestMatcher(AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")

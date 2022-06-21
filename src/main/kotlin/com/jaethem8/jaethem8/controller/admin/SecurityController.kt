@@ -19,43 +19,49 @@ class SecurityController(
     private val personalService: PersonalService,
     private val studyService: StudyService,
     private val userService: UserService
-){
+) {
     @GetMapping("/login")
-    fun login():String{
+    fun login(): String {
         return "login"
     }
+
     @GetMapping("/")
-    fun home():String{
+    fun home(): String {
         return "home"
     }
+
     @GetMapping("/registration")
-    fun getRegistration(@ModelAttribute("user") user: User):String{
+    fun getRegistration(@ModelAttribute("user") user: User): String {
         return "registration"
     }
+
     @PostMapping("/registration")
-    fun registerAdmin(@ModelAttribute("user") user: User):String{
+    fun registerAdmin(@ModelAttribute("user") user: User): String {
         userService.save(user)
         return "redirect:/registration?success"
     }
 
 
     @GetMapping("/blog/addPost")
-    fun getAddBlogPost(model:Model): String {
-        model.addAttribute("blogPostDTO",BlogPostDTO())
+    fun getAddBlogPost(model: Model): String {
+        model.addAttribute("blogPostDTO", BlogPostDTO())
         return "blog/blogPostAdd";
     }
+
     @PostMapping("/blog/addPost")
-    fun addBlogPost(@ModelAttribute blogPostDTO: BlogPostDTO):String{
+    fun addBlogPost(@ModelAttribute blogPostDTO: BlogPostDTO): String {
         blogService.addBlogPost(blogPostDTO)
         return "/blog/blogPostAdd"
     }
+
     @GetMapping("/blog/addContent")
-    fun getAddBlogContent(model:Model): String {
-        model.addAttribute("blogContentDTO",BlogContentDTO())
+    fun getAddBlogContent(model: Model): String {
+        model.addAttribute("blogContentDTO", BlogContentDTO())
         return "blog/blogContentAdd";
     }
+
     @PostMapping("/blog/addContent")
-    fun addBlogContent(@ModelAttribute blogContentDTO:BlogContentDTO):String{
+    fun addBlogContent(@ModelAttribute blogContentDTO: BlogContentDTO): String {
         blogService.addBlogContent(blogContentDTO)
         return "/blog/blogContentAdd"
     }

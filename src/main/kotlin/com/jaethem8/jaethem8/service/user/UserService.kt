@@ -11,13 +11,14 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserService(
-    private val userRepository:UserRepository,
+    private val userRepository: UserRepository,
     private val passwordEncoder: BCryptPasswordEncoder
-):UserDetailsService {
-    fun save(user:User):User?{
+) : UserDetailsService {
+    fun save(user: User): User? {
         user.password = passwordEncoder!!.encode(user.password)
         return userRepository.save(user)
     }
+
     override fun loadUserByUsername(username: String?): UserDetails {
         val user = userRepository.findByUsername(username)
             ?: throw UsernameNotFoundException("Invalid Username or Password")
@@ -27,7 +28,8 @@ class UserService(
             user.username, user.password, authorities
         )
     }
-    fun findByUsername(username:String):User?{
+
+    fun findByUsername(username: String): User? {
         return userRepository.findByUsername(username)
     }
 }
